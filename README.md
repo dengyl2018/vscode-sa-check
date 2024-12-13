@@ -1,71 +1,49 @@
-# vscode-sa-check README
+# Sa Check
 
-This is the README for your extension "vscode-sa-check". After writing up a brief description, we recommend including the following sections.
+Check code snippet or code file for multiple languages: **C++, Go**, and custom command
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+* Check code file of current active Text Editor
+* Check code file through context menu of file explorer
+* Check selected code snippet in Text Editor
+* Stop Check running
+* View output in Output Window
+* Set default language to run
+* Select language to run
 
-For example if there is an image subfolder under your extension project workspace:
+## Usages
 
-\!\[feature X\]\(images/feature-x.png\)
+* To run code:
+  * use shortcut `Ctrl+Alt+N`
+  * or press `F1` and then select/type `Sa Check`, 
+  * or right click the Text Editor and then click `Sa Check` in editor context menu
+  * or click `Sa Check` button in editor title menu
+  * or click `Sa Check` button in context menu of file explorer
+* To stop the running code:
+  * use shortcut `Ctrl+Alt+M`
+  * or press `F1` and then select/type `Stop Sa Check`
+  * or click `Stop Sa Check` button in editor title menu
+  * or right click the Output Channel and then click `Stop Sa Check` in context menu
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Configuration
 
-## Requirements
+Make sure the executor PATH of each language is set in the environment variable.
+You could also add entry into `sa-check.executorMap` to set the executor PATH.
+e.g. To set the executor PATH for ruby, php and html:
+```json
+{
+    "code-runner.executorMap": {
+        "go": "go run"
+    }
+}
+```
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
 
-## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Issues
+Submit the [issues](https://github.com/dengyl2018/vscode-sa-check/issues) if you find any bug or have any suggestion.
 
-For example:
+## Contribution
+Fork the [repo](https://github.com/dengyl2018/vscode-sa-check) and submit pull requests.
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**

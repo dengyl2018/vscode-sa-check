@@ -9,13 +9,79 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:sa-check.runCustomCommand",
+    "onCommand:sa-check.runByLanguage",
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vscode-sa-check.helloWorld",
-        "title": "Hello World"
+        "command": "sa-check.run",
+        "title": "Sa Check",
+        "icon": "$(play)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "sa-check.run",
+        "key": "ctrl+alt+d"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "!inOutput && config.sa-check.showRunCommandInEditorContextMenu",
+          "command": "sa-check.run",
+          "group": "navigation"
+        }
+      ],
+      "editor/title/run": [
+        {
+          "when": "config.sa-check.showRunIconInEditorTitleMenu",
+          "command": "sa-check.run",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Sa Check configuration",
+      "properties": {
+        "sa-check.customCommand": {
+          "type": "string",
+          "default": "echo Hello",
+          "description": "Set the custom command to run.",
+          "scope": "resource"
+        },
+        "sa-check.showRunIconInEditorTitleMenu": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to show 'Sa Check' icon in editor title menu.",
+          "scope": "resource"
+        },
+        "sa-check.showRunCommandInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to show 'Sa Check command in editor context menu.",
+          "scope": "resource"
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "sa-check-output",
+        "mimetypes": [
+          "text/x-code-output"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "sa-check-output",
+        "scopeName": "sa-check.output",
+        "path": "./syntaxes/sa-check-output.tmLanguage"
       }
     ]
   },
